@@ -1,0 +1,170 @@
+#container {
+  --card-size: 18rem;
+  article {
+    max-width: var(--card-size);
+  }
+}
+
+body:has(header form input[name="layout"][value="none"]:checked) {
+  #container {
+    /* nothing to do */
+  }
+}
+
+body:has(header form input[name="layout"][value="flex"]:checked) {
+  #container {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+body:has(header form input[name="layout"][value="flex-wrap"]:checked) {
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+body:has(header form input[name="layout"][value="grid"]:checked) {
+  #container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 0.5rem;
+    @media screen and (width > 90rem) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (width > 110rem) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @media screen and (width > 130rem) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+}
+
+body:has(header form input[name="layout"][value="bento"]:checked) {
+  #container {
+    display: grid;
+    grid-template-columns: repeat(4, var(--card-size));
+    grid-template-rows: repeat(3, var(--card-size));
+    align-items: center;
+    justify-items: center;
+    gap: 0.5rem;
+
+    & > article {
+      max-width: unset;
+      height: unset;
+      max-height: 100%;
+    }
+
+    & > :nth-child(1) {
+      grid-column: auto / span 2;
+      grid-row: auto / span 2;
+    }
+    & > :nth-child(2) {
+      grid-column: auto / span 1;
+      grid-row: auto / span 1;
+    }
+    & > :nth-child(3) {
+      grid-column: auto / span 1;
+      grid-row: auto / span 2;
+      aspect-ratio: 1/2;
+    }
+    & > :nth-child(4) {
+      grid-column: auto / span 1;
+      grid-row: auto / span 2;
+      aspect-ratio: 1/2;
+    }
+    & > :nth-child(5) {
+      grid-column: auto / span 2;
+      grid-row: auto / span 1;
+      aspect-ratio: 2/1;
+    }
+    & > :nth-child(6) {
+      grid-column: auto / span 1;
+      grid-row: auto / span 1;
+    }
+  }
+}
+
+body:has(header form input[name="layout"][value="dispatched"]:checked) {
+  #container {
+    display: grid;
+    grid-template:
+      ". one three" 1fr
+      "six four ." 1fr
+      "five four two" 1fr
+      / 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 0.5rem;
+
+    & > :nth-child(1) {
+      grid-area: one;
+    }
+    & > :nth-child(2) {
+      grid-area: two;
+    }
+    & > :nth-child(3) {
+      grid-area: three;
+    }
+    & > :nth-child(4) {
+      grid-area: four;
+    }
+    & > :nth-child(5) {
+      grid-area: five;
+    }
+    & > :nth-child(6) {
+      grid-area: six;
+    }
+  }
+}
+
+body:has(header form input[name="layout"][value="stairs"]:checked) {
+  #container {
+    display: grid;
+    grid-template:
+      "one ." 1fr
+      "one two" 1fr
+      "three two" 1fr
+      "three four" 1fr
+      "five four" 1fr
+      "five six" 1fr
+      ". six" 1fr
+      / 1fr 1fr;
+    @media screen and (width > 90rem) {
+      grid-template:
+        "one . ." 1fr
+        "one two ." 1fr
+        "three two four" 1fr
+        "three five four" 1fr
+        ". five six" 1fr
+        ". . six" 1fr
+        / 1fr 1fr 1fr;
+    }
+    justify-items: center;
+    gap: 0.5rem;
+
+    & > :nth-child(1) {
+      grid-area: one;
+    }
+    & > :nth-child(2) {
+      grid-area: two;
+    }
+    & > :nth-child(3) {
+      grid-area: three;
+    }
+    & > :nth-child(4) {
+      grid-area: four;
+    }
+    & > :nth-child(5) {
+      grid-area: five;
+    }
+    & > :nth-child(6) {
+      grid-area: six;
+    }
+  }
+}

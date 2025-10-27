@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS is Magic</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./layouts.css" />
+  </head>
+  <body>
+    <header>
+      <a href="../index.html" title="Back to home">🏠</a>
+      <form id="layout">
+        <span style="margin-right: 1rem">Choose a layout:</span>
+        <label
+          ><input type="radio" name="layout" value="none" checked /> None</label
+        >
+        <label><input type="radio" name="layout" value="flex" /> Flex</label>
+        <label
+          ><input type="radio" name="layout" value="flex-wrap" /> Flex
+          Wrap</label
+        >
+        <label><input type="radio" name="layout" value="grid" /> Grid</label>
+        <label><input type="radio" name="layout" value="bento" /> Bento</label>
+        <label
+          ><input type="radio" name="layout" value="dispatched" />
+          Dispatched</label
+        >
+        <label
+          ><input type="radio" name="layout" value="stairs" /> Stairs
+          Grid</label
+        >
+      </form>
+    </header>
+    <main id="container" class="layout-none">
+      <article>
+        <img src="../img/persona/emma.jpg" />
+        <main>
+          <p>Dubois Emma</p>
+          <em>Chef de projet digital</em>
+        </main>
+      </article>
+      <article>
+        <img src="../img/persona/lucas.jpg" />
+        <main>
+          <p>Moreau Lucas</p>
+          <em>Développeur full-stack</em>
+        </main>
+      </article>
+      <article>
+        <img src="../img/persona/camille.jpg" />
+        <main>
+          <p>Lefèvre Camille</p>
+          <em>Responsable marketing</em>
+        </main>
+      </article>
+      <article>
+        <img src="../img/persona/thomas.jpg" />
+        <main>
+          <p>Bernard Thomas</p>
+          <em>Data scientist</em>
+        </main>
+      </article>
+      <article>
+        <img src="../img/persona/lea.jpg" />
+        <main>
+          <p>Petit Léa</p>
+          <em>Designer UX/UI</em>
+        </main>
+      </article>
+      <article>
+        <img src="../img/persona/antoine.jpg" />
+        <main>
+          <p>Girard Antoine</p>
+          <em>Responsable logistique</em>
+        </main>
+      </article>
+    </main>
+    <script>
+      // function getLayout() {
+      //   return new FormData(window.layout).get("layout");
+      // }
+      // window.container.className = "layout-" + getLayout();
+      // window.layout.addEventListener(
+      //   "change",
+      //   () => (window.container.className = "layout-" + getLayout())
+      // );
+    </script>
+  </body>
+</html>
