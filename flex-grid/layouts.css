@@ -1,16 +1,15 @@
 #container {
   --card-size: 18rem;
-  article {
-    max-width: var(--card-size);
-  }
 }
 
 body:has(header form input[name="layout"][value="none"]:checked) {
   #container {
-    /* nothing to do */
+    article {
+      max-width: var(--card-size);
+    }
   }
 }
-
+    
 body:has(header form input[name="layout"][value="flex"]:checked) {
   #container {
     display: flex;
@@ -24,6 +23,10 @@ body:has(header form input[name="layout"][value="flex-wrap"]:checked) {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
+
+    article {
+      max-width: var(--card-size);
+    }
   }
 }
 
@@ -42,6 +45,9 @@ body:has(header form input[name="layout"][value="grid"]:checked) {
     @media screen and (width > 130rem) {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+    article {
+      width: var(--card-size);
+    }
   }
 }
 
@@ -56,7 +62,7 @@ body:has(header form input[name="layout"][value="bento"]:checked) {
 
     & > article {
       max-width: unset;
-      height: unset;
+      /* height: unset; */
       max-height: 100%;
     }
 
@@ -94,10 +100,10 @@ body:has(header form input[name="layout"][value="dispatched"]:checked) {
   #container {
     display: grid;
     grid-template:
-      ". one three" 1fr
-      "six four ." 1fr
-      "five four two" 1fr
-      / 1fr 1fr 1fr;
+      ". one three" var(--card-size)
+      "six four ." var(--card-size)
+      "five four two" var(--card-size)
+      / var(--card-size) var(--card-size) var(--card-size);
     align-items: center;
     justify-items: center;
     gap: 0.5rem;
@@ -134,7 +140,7 @@ body:has(header form input[name="layout"][value="stairs"]:checked) {
       "five four" 1fr
       "five six" 1fr
       ". six" 1fr
-      / 1fr 1fr;
+      / var(--card-size) var(--card-size);
     @media screen and (width > 90rem) {
       grid-template:
         "one . ." 1fr
@@ -143,7 +149,7 @@ body:has(header form input[name="layout"][value="stairs"]:checked) {
         "three five four" 1fr
         ". five six" 1fr
         ". . six" 1fr
-        / 1fr 1fr 1fr;
+        / var(--card-size) var(--card-size) var(--card-size);
     }
     justify-items: center;
     gap: 0.5rem;
