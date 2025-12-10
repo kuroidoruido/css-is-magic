@@ -62,7 +62,6 @@ body:has(header form input[name="layout"][value="bento"]:checked) {
 
     & > article {
       max-width: unset;
-      /* height: unset; */
       max-height: 100%;
     }
 
@@ -171,6 +170,22 @@ body:has(header form input[name="layout"][value="stairs"]:checked) {
     }
     & > :nth-child(6) {
       grid-area: six;
+    }
+  }
+}
+
+body:has(header form input[name="layout"][value="bricks"]:checked) {
+  #container {
+    display: grid;
+    grid-template-rows: auto;
+    justify-items: center;
+    gap: 0.5rem;
+
+    grid-template-columns: repeat(4, var(--card-size));
+    & > :nth-child(4n), & > :nth-child(4n-1) {
+      border: 1px solid green;
+      grid-column: span 2;
+      aspect-ratio: 2 / 1;
     }
   }
 }
