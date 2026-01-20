@@ -10,13 +10,13 @@ a {
 body > p.alert a {
     color: red;
 }
-@layer base {
-    body > p.alert a {
-        text-decoration: red underline 2px;
-    }
-}
 @layer page {
     a {
         text-decoration: blue underline wavy 2px;
+    }
+}
+@layer base {
+    body > p.alert a {
+        text-decoration: red underline 2px;
     }
 }
