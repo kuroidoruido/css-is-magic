@@ -1,0 +1,98 @@
+:root {
+  /* ATOMS */
+  --color--white: #ffffff;
+  --color--black: #121212;
+  --color--dark-gray: #333333;
+  --color--gray: #6c757d;
+  --color--light-gray: #e0e0e0;
+  --color--blue: #007bff;
+  --color--green: #28a745;
+  --size--quarter: 0.125rem;
+  --size--half: 0.25rem;
+  --size--1: 0.5rem;
+  --size--2: 1rem;
+  --size--3: 1.5rem;
+  --size--4: 2rem;
+  --size--5: 4rem;
+
+  /* MOLECULES */
+  --color--bg: light-dark(var(--color--white), var(--color--black));
+  --color--text: light-dark(var(--color--dark-gray), var(--color--light-gray));
+  --color--primary: var(--color--blue);
+  --color--secondary: var(--color--gray);
+  --color--accent: var(--color--green);
+  --main-text--max-width: 100ch;
+  --reponsive-main-text-max-width: min(
+    100dvw,
+    min(100vw, var(--main-text--max-width))
+  );
+}
+
+#overview {
+    --overview--odd-month-border-color: var(--color--secondary);
+    --overview--even-month-border-color: rgb(from var(--overview--odd-month-border-color) r g b / 0.7);
+    --overview--day-width: var(--size--1);
+    --overview--day-border-radius: calc(var(--overview--day-width) / 2);
+    --overview--padding: var(--size--half);
+    --overview--today-border-color: var(--color--accent);
+    --overview--with-article-color: var(--color--primary);
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(53, var(--overview--day-width));
+        grid-template-rows: repeat(7, var(--overview--day-width));
+        grid-auto-flow: column;
+        list-style-type: none;
+        gap: 1px;
+        padding: var(--overview--padding);
+
+        li {
+            border: 1px solid var(--overview--odd-month-border-color);
+            border-radius: var(--overview--day-border-radius);
+            width: var(--overview--day-width);
+            height: var(--overview--day-width);
+            padding: 0;
+            margin: 0;
+
+            &[data-date*="-02-"], &[data-date*="-04-"],
+            &[data-date*="-06-"], &[data-date*="-08-"],
+            &[data-date*="-10-"], &[data-date*="-12-"] {
+                border-color: var(--overview--even-month-border-color);
+            }
+
+            &[data-previous-year] {
+                border: none;
+            }
+
+            &[data-today] {
+                border-color: var(--overview--today-border-color);
+                border-width: 2px;
+            }
+
+            &:has(a) {
+                background-color: var(--overview--with-article-color);
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        li[data-today] ~ li {
+            opacity: 0.5;
+        }
+    }
+}
+
+#previous-posts {
+    ul {
+        li {
+            a {
+                &:target {
+                    color: var(--color--primary)
+                }
+            }
+        }
+    }
+}
